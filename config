@@ -167,9 +167,10 @@ assign [class="Mailspring"] $ws8
 
 #zoom, skype on workspace 9
 assign [class="Skype"] $ws9
-for_window [class="skype"] floating enable, resize set 1200 800
+for_window [class="Skype"] floating enable, resize set 1200 800
 assign [class="zoom"] $ws9
-for_window [class="zoom"] floating enable, resize set 1200 800
+for_window [class="zoom"] floating enable, resize set 680 680
+for_window [class="^zoom$" title="^Zoom"] floating enable
 
 
 #Twitch (nativefier) on workspace 10
