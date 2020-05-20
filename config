@@ -105,7 +105,7 @@ set $ws5 "5: Games "
 set $ws6 "6: Database "
 set $ws7 "7: Books "
 set $ws8 "8: Email "
-set $ws9 "9"
+set $ws9 "9: Video "
 set $ws10 "10: TV "
 
 # switch to workspace
@@ -164,6 +164,13 @@ assign [class="calibre"] $ws7
 
 #mailspring on worskpace 8
 assign [class="Mailspring"] $ws8
+
+#zoom, skype on workspace 9
+assign [class="Skype"] $ws9
+for_window [class="skype"] floating enable, resize set 1200 800
+assign [class="zoom"] $ws9
+for_window [class="zoom"] floating enable, resize set 1200 800
+
 
 #Twitch (nativefier) on workspace 10
 assign [class="twitchtv-nativefier-ab1dd5"] $ws10
@@ -257,11 +264,12 @@ for_window [class="Gnome-system-monitor"] floating enable
 
 # Applications starting on logging
 exec compton --config ~/.config/i3/compton.conf -b -f
-exec --no-startup-id google-chrome
+#exec --no-startup-id google-chrome
 exec --no-startup-id /home/lucas/WebApps/WhatsApp-linux-x64/WhatsApp
-exec --no-startup-id launch-discord 
-exec --no-startup-id /home/lucas/WebApps/TwitchTV-linux-x64/TwitchTV
+exec --no-startup-id discord
+#exec --no-startup-id /home/lucas/WebApps/TwitchTV-linux-x64/TwitchTV
 exec --no-startup-id steam
+exec --no-startup-id skypeforlinux
 
 # Wallpaper && Lockscreen
 exec_always --no-startup-id feh --bg-scale /home/lucas/Pictures/wallpaper.jpg
