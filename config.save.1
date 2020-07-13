@@ -87,7 +87,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+2bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -97,13 +97,13 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1: Chrome "
+set $ws1 "1: Chrome "<body style="height: 100%; width: 100%; overflow: hidden; margin:0px; background-color: rgb(82, 86, 89);"><embed name="9CF8BFF20D072C13E6EB909C397C0A0E" style="position:absolute; left: 0; top: 0;" width="100%" height="100%" src="about:blank" type="application/pdf" internalid="9CF8BFF20D072C13E6EB909C397C0A0E"></body>
 set $ws2 "2: Comms "
 set $ws3 "3: Dev "
 set $ws4 "4: Torrent "
-set $ws5 "5: Steam "
-set $ws6 "6: Study "
-set $ws7 "7: Farm "
+set $ws5 "5: Games "
+set $ws6 "6: Database "
+set $ws7 "7: Books "
 set $ws8 "8: Email "
 set $ws9 "9: Video "
 set $ws10 "10: TV "
@@ -156,6 +156,9 @@ for_window [title=".*Emulator.*"] floating enable
 # qbitTorrent on workspace 4
 assign [class="qBittorrent"] $ws4
 
+# dbeaver on workspace 6
+assign [class="DBeaver"] $ws6
+
 # calibre on workspace 7
 assign [class="calibre"] $ws7
 
@@ -167,6 +170,8 @@ assign [class="Skype"] $ws9
 for_window [class="Skype"] floating enable, resize set 1200 800
 assign [class="zoom"] $ws9
 for_window [class="zoom"] floating enable, resize set 680 680
+for_window [class="^zoom$" title="^Zoom"] floating enable
+
 
 #Twitch (nativefier) on workspace 10
 assign [class="twitchtv-nativefier-ab1dd5"] $ws10
@@ -238,7 +243,7 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-	bindsym button1 nop
+	bindsym button1 nop	
 	wheel_up_cmd nop
 	wheel_down_cmd exec ~/.i3/scripts/custom_wheel_down
 	tray_output none
@@ -257,24 +262,24 @@ bar {
 bindsym control+Shift+Escape exec --no-startup-id gnome-system-monitor;focus
 for_window [class="Gnome-system-monitor"] floating enable
 
-# Pavu control
-bindsym control+shift+p exec --no-startup-id pavucontrol
-for_window [class="Pavucontrol"] floating enable
 
 # Applications starting on logging
 exec compton --config ~/.config/i3/compton.conf -b -f
+#exec --no-startup-id google-chrome
 exec --no-startup-id /home/lucas/WebApps/WhatsApp-linux-x64/WhatsApp
 exec --no-startup-id discord
+#exec --no-startup-id /home/lucas/WebApps/TwitchTV-linux-x64/TwitchTV
 exec --no-startup-id steam
+exec --no-startup-id skypeforlinux
 
 # Wallpaper && Lockscreen
 exec_always --no-startup-id feh --bg-scale /home/lucas/Pictures/wallpaper.jpg
 bindsym $mod+shift+x exec --no-startup-id i3lock-fancy -pf Comic-Sans-MS -- scrot -z
 
 # Monitor swaping
-# Only one monitor (original)
+# Only one monitor
 bindsym $mod+shift+o exec --no-startup-id xrandr --output DVI-D-0 --off --output HDMI-1 --off --output HDMI-0 --primary --mode 2560x1080 --pos 0x1080 --rotate normal --output DP-3 --off --output DP-2 --off --output DP-1 --off --output DP-0 --off; 
-# TV and monitor (projection)
+# TV and monitor
 bindsym $mod+shift+p exec --no-startup-id xrandr --output DVI-D-0 --off --output HDMI-1 --off --output HDMI-0 --primary --mode 2560x1080 --pos 0x1080 --rotate normal --output DP-3 --mode 1920x1080 --pos 341x0 --rotate normal --output DP-2 --off --output DP-1 --off --output DP-0 --off
 
 # workspace default monitors
